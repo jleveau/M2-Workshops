@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<form 
+    <% if(workshop) { %> action="/update-workshop" <% } else { %> action = "/workshop" <% } %>
+    method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name"  placeholder="Workshop Name"
+            <% if(workshop) { %> value=<%= workshop.name %> readonly } else { %> value = "" <% } %>
+            required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" class="form-control" id="description" placeholder="Give a description for your workshop" 
+            <% if(workshop) { %> value=<%= workshop.description %> } else { %> value = "" <% } %>
+            required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a type="button" class="btn btn-secondary" href="/">Cancel</a>
+</form>
+
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>
