@@ -34,13 +34,23 @@ function addWorkshop(name, description) {
 
 function removeWorkshopByName(name) {
   return new Promise((resolve, reject) => {
-    reject(new Error('Not implemented'));
+    if (!name) {
+      reject(new Error('Workshop name is needed'));
+    } else {
+      resolve(getWorkshopByName(name)
+        .then((workshop) => {
+          getWorkshopList()
+            .then((workshops) => {
+              workshops.splice(workshops.indexOf(workshop));
+            });
+        }));
+    }
   });
 }
 
 function updateWorkshop(name, description) {
   return new Promise((resolve, reject) => {
-    if (!name && !description) {
+    if (!name || !description) {
       reject(new Error('Workshop name and description needed'));
     } else {
       resolve(getWorkshopByName(name)
