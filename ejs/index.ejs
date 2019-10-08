@@ -14,13 +14,24 @@
 <a type="button" href="/workshop" class="btn btn-success btn-lg">Create new workshop</a>
 
 <ul class="list-unstyled"></ul>
-<% workshops.forEach(function(workshop) { %>
+ <% workshops.forEach(function(workshop) { %>
     <li class="media my-4">
-        <div class="media-body">
+        <div class="media-body" style="border-bottom: solid 1px grey">
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
-            <%= workshop.description %>        </div>        
+            <%= workshop.description %>               
+        </div>
+        <form action="/remove-workshop" method="post" >
+            <input type="hidden" name="workshopName" value= <%= workshop.name %> >
+            <input type="hidden" name="workshopDesc" value= <%= workshop.description %> >
+          <button type="submit" style="margin-left: 5px; background:#27A745" class="btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-trash"></span> Trash 
+          </button>
+          <button formaction = "/update-workshop" style="margin-left: 5px; background: #27A745" type="submit" class="btn btn-info btn-lg">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+          </button>
+        </form>      
     </li>
-<% }); %>
+ <% }); %>
 </ul>
 
 <footer>
