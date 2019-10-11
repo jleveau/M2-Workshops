@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ./head %>
+</head>
+
+<body class="container">
+
+
+    <form action="/update-workshop" method="post">
+        <div class="form-group">
+            <label for="name">Previous Name</label>
+            <input type="text" name="prevname" class="form-control" id="prevname" placeholder="Workshop Previous Name" required>
+        </div>
+        <div class="form-group">
+            <label for="name">New Name</label>
+            <input type="text" name="newname" class="form-control" id="newname" placeholder="Workshop New Name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">New Description</label>
+            <input type="text" name="description" class="form-control" id="description"
+                placeholder="Update the description of your workshop" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a type="button" class="btn btn-secondary" href="/">Cancel</a>
+    </form>
+
+    <footer>
+        <% include ./footer %>
+    </footer>
+
+</body>
+
+</html>
