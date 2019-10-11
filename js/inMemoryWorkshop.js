@@ -12,7 +12,7 @@ function getWorkshopByName(name) {
         if (!name) {
             reject(new Error("name parameter is required"))
         }
-        resolve(inMemoryWorkshop.find(workshop => workshop.name === workshop))
+        resolve(inMemoryWorkshop.find(workshop => workshop.name === name))
     })
 }
 
@@ -34,13 +34,20 @@ function addWorkshop(name, description) {
 
 function removeWorkshopByName(name) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        if (!name) {
+            reject(new Error("Workshop name required"))
+        }
+        inMemoryWorkshop = inMemoryWorkshop.filter(workshop => workshop.name !== name)
+        resolve()
     })
 }
 
-function updateWorkshop(name) {
+function updateWorkshop(name, obj) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        const objectToModifie = inMemoryWorkshop.find(workshop => workshop.name === name)
+        objectToModifie.name = obj.name
+        objectToModifie.description = obj.description
+        resolve()
     })
 }
 
