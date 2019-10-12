@@ -41,7 +41,7 @@ function removeWorkshopByName(name) {
         .then((workshop) => {
           getWorkshopList()
             .then((workshops) => {
-              workshops.splice(workshops.indexOf(workshop));
+              workshops.splice(workshops.indexOf(workshop), 1);
             });
         }));
     }
