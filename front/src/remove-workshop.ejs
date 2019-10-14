@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ./head %>
+    </head>
+    <body class="container">
+
+        <div class="jumbotron">
+            <h1>Remove a Workshop</h1>
+            <form action="/remove-workshop" method="POST">
+                <p>Bro tu veux vraiment supprimer ce pauvre workShop tu est une personne horrible!!!<p>
+
+                <div class="media-body workshop-container"></div>
+                    <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
+                    <p><%= workshop.description %></p>
+                </div> 
+                <input type="text"  name="name" value="<%= workshop.name %>" hidden>
+                <button type="submit" class="btn btn-primary">Oui, je suis un tueur sanguinaire!</button>
+                <a type="button" class="btn btn-secondary" href="/">Non ce pauvre workshop a mérité de vivre!</a>
+            </form>
+        </div> 
+
+        <footer>
+            <% include ./footer %>
+        </footer>
+
+    </body>
+</html>
