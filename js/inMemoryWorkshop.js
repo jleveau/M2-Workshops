@@ -50,4 +50,4 @@ module.exports = {
     addWorkshop,
     removeWorkshopByName,
     updateWorkshop
-}
+};
