@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
   res.render('workshop')
 })
 
-router.post('/', function (req, res) {
+router.post('/add', function (req, res) {
   const name = req.body.name
   const description = req.body.description
   InMemoryWorkshop.addWorkshop(name, description).then(() => {
@@ -22,7 +22,13 @@ router.get('/:name', function (req, res) {
   const workshopName = req.params.name
   InMemoryWorkshop.getWorkshopByName(workshopName)
     .then(workshop => {
-      res.render('workshop', workshop)
+      if (workshop) {
+        res.render('workshop', {
+          workshop: workshop
+        })
+      } else {
+        res.redirect('/')
+      }
     })
     .catch(e => ejs.send(e.message))
 })
@@ -32,7 +38,14 @@ router.post('/remove', function (req, res) {
 })
 
 router.post('/update', function (req, res) {
-  res.status(500).send('TODO')
+  const previousName = req.body.previous_name
+  const name = req.body.name
+  const description = req.body.description
+  InMemoryWorkshop.updateWorkshop(previousName, name, description)
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch(e => res.send(e.message))
 })
 
 module.exports = router
