@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <% include ./head %>
+    <% include ../templates/head %>
 </head>
 <body class="container">
 
@@ -18,13 +18,21 @@
     <li class="media my-4">
         <div class="media-body">
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
-            <%= workshop.description %>        </div>        
+            <%= workshop.description %>        
+        </div> 
+        <div>
+            <form action="/remove-workshop" method="post">
+                <input id="name" name="name" value="<%= workshop.name%>" >
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <a type="button" class="btn btn-info" href="/update-workshop">Modify</a>
+        </div>       
     </li>
 <% }); %>
 </ul>
 
 <footer>
-    <% include ./footer %>
+    <% include ../templates/footer %>
 </footer>
 
 </body>
