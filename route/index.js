@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '..', '/ejs'));
-app.use(express.static(path.join(__dirname , '..', 'css')));
+app.set('views', path.join(__dirname, '..', '/view'));
+app.use(express.static(path.join(__dirname , '..', '/view')));
 
 
 app.get('/', function (req, res) {
@@ -51,8 +51,37 @@ app.get('/workshop/:name', function (req, res) {
     .catch(e =>ejs.send(e.message))
 })
 
-app.post('/remove-workshop', function (req, res) {
-    res.status(500).send("TODO")
+app.get('/modif', function (req, res) {
+    console.log("get")
+    res.render('modif')
+})
+
+app.post('/modif', function (req, res) {
+    const name = req.body.name
+    const description = req.body.description
+    InMemoryWorkshop.updateWorkshop(name).then(() => {
+        InMemoryWorkshop.getWorkshopList()
+        .then(workshops => {
+            res.render("index", {
+                workshops: workshops
+            })
+        })
+    })
+    .catch(e =>res.send(e.message))
+})
+
+app.post('/suppr', function (req, res) {
+    const name = req.body.name
+    const description = req.body.description
+    InMemoryWorkshop.removeWorkshopByName(name).then(() => {
+        InMemoryWorkshop.getWorkshopList()
+        .then(workshops => {
+            res.render("index", {
+                workshops: workshops
+            })
+        })
+    })
+    .catch(e =>res.send(e.message))
 })
 
 app.post('/update-workshop', function(req, res) {

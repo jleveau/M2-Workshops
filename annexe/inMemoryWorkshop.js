@@ -34,13 +34,16 @@ function addWorkshop(name, description) {
 
 function removeWorkshopByName(name) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        inMemoryWorkshop.indexOf(name);
+        if (index > -1) {
+            array.splice(index, 1);
+        }
     })
 }
 
 function updateWorkshop(name) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        inMemoryWorkshop.getWorkshopByName()
     })
 }
 
