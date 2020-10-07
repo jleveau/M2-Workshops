@@ -96,3 +96,6 @@ public
 
 # DynamoDB Local files
 .dynamodb/
+
+#user-specific files
+package-lock.json
