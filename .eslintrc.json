@@ -6,7 +6,7 @@
   "parser": "esprima",
 
   "rules": {
-    "eslint semi": ["error", "always"],
+    "semi": ["error", "always"],
     "no-duplicate-case": "warn",
     "camelcase": "error",
     "no-var": "error",
@@ -14,6 +14,7 @@
     "comma-spacing": ["warn", { "before": false, "after": true }],
     "eqeqeq": ["error", "always"],
     "arrow-spacing": "warn",
-    "indent": ["warn", 2]
+    "indent": ["warn", 2],
+    "no-mixed-spaces-and-tabs": "error"
   }
 }
