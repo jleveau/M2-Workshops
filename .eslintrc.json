@@ -1,0 +1,15 @@
+{
+  "parserOptions": {
+    "emcmaVersion": 6,
+    "sourceType": "module"
+  },
+  "parser": "esprima",
+
+  "rules": {
+    "semi": "error",
+    "no-duplicate-case": "warn",
+    "camelcase": "warn",
+    "no-var": "error",
+    "brace-style": 1
+  }
+}
