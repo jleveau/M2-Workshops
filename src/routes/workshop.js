@@ -23,7 +23,7 @@ router.get('/:name', function (req, res) {
   InMemoryWorkshop.getWorkshopByName(workshopName)
     .then(workshop => {
       if (workshop) {
-        res.render('workshop', {
+        res.render('workshop-edit', {
           workshop: workshop
         })
       } else {
