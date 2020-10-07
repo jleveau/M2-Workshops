@@ -17,8 +17,8 @@ const home = require('./routes/home')
 app.use('/', home)
 app.use('/workshop', workshop)
 app.use('/workshop/:name', workshop)
-app.use('/remove-workshop', workshop)
-app.use('/update-workshop', workshop)
+app.use('/workshop/remove', workshop)
+app.use('/workshop/update', workshop)
 
 app.listen(3000, function () {
   console.log('Workshop app listening on port 3000!')
