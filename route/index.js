@@ -1,7 +1,7 @@
 
 const express = require('express')
 const app = express()
-const InMemoryWorkshop = require("./inMemoryWorkshop")
+const InMemoryWorkshop = require("../annexe/inMemoryWorkshop.js")
 const path = require("path")
 const ejs = require('ejs')
 var bodyParser = require('body-parser')
