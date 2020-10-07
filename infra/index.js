@@ -37,11 +37,11 @@ app.post("/workshop", function (req, res) {
     .catch((e) => res.send(e.message));
 });
 
-app.get("/workshop/:name", function (req, res) {
+app.get("/update-workshop/:name", function (req, res) {
   const workshopName = req.params.name;
   InMemoryWorkshop.getWorkshopByName(workshopName)
     .then((workshop) => {
-      res.render("ejs/workshop", workshop);
+      res.render("workshop", workshop);
     })
     .catch((e) => ejs.send(e.message));
 });
@@ -50,8 +50,18 @@ app.post("/remove-workshop", function (req, res) {
   res.status(500).send("TODO");
 });
 
-app.post("/update-workshop", function (req, res) {
-  res.status(500).send("TODO");
+app.post("/update-workshop/:name", function (req, res) {
+  const newName = req.body.name;
+  const newDescription = req.body.description;
+  workshop = InMemoryWorkshop.getWorkshopByName(name);
+  InMemoryWorkshop.updateWorkshop(name, newName)
+    .then(() => {
+      InMemoryWorkshop.getWorkshopList().then((workshops) => {
+        res.redirect("/");
+      });
+    })
+    .catch((e) => res.send(e.message));
+  // res.status(500).send("TODO");
 });
 
 app.listen(3000, function () {

@@ -37,9 +37,20 @@ function removeWorkshopByName(name) {
   });
 }
 
-function updateWorkshop(name) {
+function updateWorkshop(oldName, newName, newDescription) {
   return new Promise((resolve, reject) => {
-    reject(new Error("Not implemented"));
+    if (!newName) {
+      reject(new Error("Workshop name required"));
+    }
+    if (!newDescription) {
+      reject(new Error("Workshop description required"));
+    }
+    getWorkshopByName(name)
+      .then( workshop => {
+        workshop.name = newName;
+        workshop.description = newDescription;
+      });
+    resolve();
   });
 }
 

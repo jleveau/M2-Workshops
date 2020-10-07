@@ -19,6 +19,7 @@
         <div class="media-body">
           <h5 class="name mt-0 mb-1"><%= workshop.name %></h5>
           <div class="description"><%= workshop.description %></div>
+          <a type="button" href="/update-workshop/:<%= workshop.name %>" class="btn btn-secondary">Modify</a>
         </div>
       </li>
       <% }); %>
