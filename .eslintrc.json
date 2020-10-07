@@ -6,10 +6,14 @@
   "parser": "esprima",
 
   "rules": {
-    "semi": "error",
+    "eslint semi": ["error", "always"],
     "no-duplicate-case": "warn",
-    "camelcase": "warn",
+    "camelcase": "error",
     "no-var": "error",
-    "brace-style": 1
+    "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+    "comma-spacing": ["warn", { "before": false, "after": true }],
+    "eqeqeq": ["error", "always"],
+    "arrow-spacing": "warn",
+    "indent": ["warn", 2]
   }
 }
