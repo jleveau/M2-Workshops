@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Workshops</title>
     <% include ./head %>
   </head>
   <body class="container">
@@ -19,6 +20,8 @@
         <div class="media-body">
           <h5 class="name mt-0 mb-1"><%= workshop.name %></h5>
           <div class="description"><%= workshop.description %></div>
+          <a href="/remove-workshop/<%=index%>" type="button" >Delete</a>
+        </div>
         </div>
       </li>
       <% }); %>
