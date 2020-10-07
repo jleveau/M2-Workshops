@@ -31,9 +31,12 @@ function addWorkshop(name, description) {
   });
 }
 
-function removeWorkshopByName(name) {
+function removeWorkshopById(id) {
   return new Promise((resolve, reject) => {
-    reject(new Error("Not implemented"));
+    if (id < 0) {
+      reject(new Error("Invalid Id"));
+    }
+    inMemoryWorkshop.splice(id, 1);
   });
 }
 
@@ -58,6 +61,6 @@ module.exports = {
   getWorkshopList,
   getWorkshopByName,
   addWorkshop,
-  removeWorkshopByName,
+  removeWorkshopById,
   updateWorkshop,
 };
