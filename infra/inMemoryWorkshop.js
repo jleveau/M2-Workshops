@@ -15,6 +15,18 @@ function getWorkshopByName(name) {
   });
 }
 
+function getWorkshopById(id) {
+  return new Promise((resolve, reject) => {
+    if (!id) {
+      reject(new Error("id parameter is required"));
+    }
+    if (id < 0 | id >= inMemoryWorkshop.length()){
+      reject(new Error("id parameter is out of bound"));
+    }
+    resolve(inMemoryWorkshop[id]);
+  });
+}
+
 function addWorkshop(name, description) {
   return new Promise((resolve, reject) => {
     if (!name) {
@@ -40,7 +52,7 @@ function removeWorkshopById(id) {
   });
 }
 
-function updateWorkshop(oldName, newName, newDescription) {
+function updateWorkshop(id, newName, newDescription) {
   return new Promise((resolve, reject) => {
     if (!newName) {
       reject(new Error("Workshop name required"));
@@ -48,7 +60,7 @@ function updateWorkshop(oldName, newName, newDescription) {
     if (!newDescription) {
       reject(new Error("Workshop description required"));
     }
-    getWorkshopByName(name)
+    getWorkshopById(id)
       .then( workshop => {
         workshop.name = newName;
         workshop.description = newDescription;
@@ -60,6 +72,7 @@ function updateWorkshop(oldName, newName, newDescription) {
 module.exports = {
   getWorkshopList,
   getWorkshopByName,
+  getWorkshopById,
   addWorkshop,
   removeWorkshopById,
   updateWorkshop,

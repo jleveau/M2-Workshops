@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "..", "/UI"));
+app.set("views", path.join(__dirname, "..", "UI"));
 app.use(express.static(path.join(__dirname, "..", "UI")));
 
 app.get("/", function (req, res) {
@@ -37,11 +37,11 @@ app.post("/workshop", function (req, res) {
     .catch((e) => res.send(e.message));
 });
 
-app.get("/update-workshop/:name", function (req, res) {
-  const workshopName = req.params.name;
-  InMemoryWorkshop.getWorkshopByName(workshopName)
+app.get("/workshop/:id", function (req, res) {
+  const workshopId = req.params.id;
+  InMemoryWorkshop.getWorkshopById(workshopId)
     .then((workshop) => {
-      res.render("workshop", workshop);
+      res.render("workshop", { workshop: workshop } );
     })
     .catch((e) => ejs.send(e.message));
 });
@@ -53,18 +53,17 @@ app.get("/remove-workshop/:id", function (req, res) {
   res.redirect("/");
 });
 
-app.post("/update-workshop/:name", function (req, res) {
+app.post("/workshop/:id", function (req, res) {
   const newName = req.body.name;
   const newDescription = req.body.description;
-  workshop = InMemoryWorkshop.getWorkshopByName(name);
-  InMemoryWorkshop.updateWorkshop(name, newName)
+  const id = req.params.id;
+  InMemoryWorkshop.updateWorkshop(id, newName, newDescription)
     .then(() => {
       InMemoryWorkshop.getWorkshopList().then((workshops) => {
         res.redirect("/");
       });
     })
     .catch((e) => res.send(e.message));
-  // res.status(500).send("TODO");
 });
 
 app.listen(3000, function () {
