@@ -2,8 +2,9 @@ const db = require('./db');
 
 /**
  * TODO
+ * @param {Express} app
  */
-function start() {
+function start(app) {
   app.get('/', function(req, res) {
     db.getWorkshopList()
         .then((workshops) => {
