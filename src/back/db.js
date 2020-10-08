@@ -1,9 +1,9 @@
-inMemoryWorkshop = []
+db = []
 
 
 function getWorkshopList() {
     return new Promise((resolve, ) => {
-        resolve(inMemoryWorkshop)
+        resolve(db)
     })
 }
 
@@ -12,7 +12,7 @@ function getWorkshopByName(name) {
         if (!name) {
             reject(new Error("name parameter is required"))
         }
-        resolve(inMemoryWorkshop.find(workshop => workshop.name === workshop))
+        resolve(db.find(workshop => workshop.name === workshop))
     })
 }
 
@@ -24,7 +24,7 @@ function addWorkshop(name, description) {
         if (!description) {
             reject(new Error("Workshop description required"))
         }
-        inMemoryWorkshop.push({
+        db.push({
             name,
             description
         })
