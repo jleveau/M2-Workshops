@@ -36,7 +36,7 @@ function start(app) {
   // API ENDPOINTS
   // ----------------
 
-  app.post('/api/workshop', function(req, res) {
+  app.post('/api/create-workshop', function(req, res) {
     const name = req.body.name;
     const description = req.body.description;
     db.addWorkshop(name, description)
