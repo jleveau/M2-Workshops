@@ -20,7 +20,28 @@ function getWorkshopByName(name) {
     if (!name) {
       reject(new Error('name parameter is required'));
     }
-    resolve(db.findIndex((workshop) => workshop.name === name));
+
+    let idx = 0;
+    let found = false;
+    while (idx < db.length && !found) {
+      if (db[idx].name === name) {
+        found = true;
+      } else {
+        idx ++;
+      }
+    }
+
+    if (found) {
+      resolve(
+          {
+            name: db[idx].name,
+            description: db[idx].description,
+            index: idx,
+          },
+      );
+    } else {
+      reject(new Error('Could not find workshop with name ' + name));
+    }
   });
 }
 
