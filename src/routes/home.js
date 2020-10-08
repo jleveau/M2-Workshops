@@ -1,6 +1,6 @@
 const express = require('express')
 
-const InMemoryWorkshop = require('../services/workshops')
+const InMemoryWorkshop = require('../services/workshopService')
 const router = express.Router()
 
 router.get('/', function (req, res) {
