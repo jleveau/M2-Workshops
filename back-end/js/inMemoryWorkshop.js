@@ -14,7 +14,8 @@ function getWorkshopByName(name) {
         if (!name) {
             reject(new Error("name parameter is required"));
         }
-        resolve(inMemoryWorkshop.find(workshop => workshop.name === workshop));
+        
+        resolve(inMemoryWorkshop.find(workshop => workshop.name === name));
     });
 }
 

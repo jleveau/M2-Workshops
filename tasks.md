@@ -1,10 +1,10 @@
 # Liste des tâches à effectuer pour la mise a jour d'un workshop
 
 
-* [ ]  Ajouter un lien sur le workshop que l'on souhaite modifier qui renvoie sur la page /workshop.
+* [x]  Ajouter un lien sur le workshop que l'on souhaite modifier qui renvoie sur la page /workshop.
 
 
-* [ ]  Modifier le fichier workshop.ejs afin de récupérer le nom et la description.
+* [x]  Modifier le fichier workshop.ejs afin de récupérer le nom et la description.
 
 
 * [ ]  Ajouter les boutons de suppressions et de modifications sur la page workshop uniquement si le workshop existe déjà.
