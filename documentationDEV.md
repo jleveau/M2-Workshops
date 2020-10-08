@@ -8,7 +8,10 @@ De plus il n'y a aucune différenciation entre les fichiers de tests et les fich
 
 Voici donc l'organisation que je propose :
 
-* web/ (contient tout les fichiers servant à générer les différentes pages web .ejs, .js et .css)
+* web/ (contient les dossier des pages web)
+* web/index (contient tout les fichiers pour la page d'accueil principale)
+* web/usr (contient tout les fichiers pour les pages web de l'utilisateur, page profil d'utilisateur et page de récapitulatif des workshops de l'utilisateur)
+* web/wkshp (contient tout les fichiers pour les pages d'actions par rapport au workshop, ajout, suppression et modification)
 * test/ (contient les fichiers de tests)
 * result/ (contient les fichiers résultats des différents tests)
 * runTest.sh (un script lançant tout les tests et les faisant s'enregistrer dans un même fichier récapitulatif stocker dans result/ )
