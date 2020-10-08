@@ -62,7 +62,10 @@ function start(app) {
   });
 
   app.post('/api/remove-workshop', function(req, res) {
-    res.status(500).send('TODO');
+    const workshopName = req.body.name;
+    db.removeWorkshopByName(workshopName)
+        .then(() => res.redirect('/'))
+        .catch((e) => res.send(e.message));
   });
 
   app.post('/api/update-workshop', function(req, res) {

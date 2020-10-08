@@ -22,12 +22,20 @@
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
             <%= workshop.description %>
         </div>
-    </li>
 
     <form action="/workshop" method="post">
         <input type="text" name="name" value="<%= workshop.name %>" hidden>
         <button type="submit" class="btn btn-warning">Update</button>
     </form>
+
+    &nbsp;
+
+    <form action="/api/remove-workshop" method="post">
+        <input type="text" name="name" value="<%= workshop.name %>" hidden>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+    </li>
 <% }); %>
 </ul>
 
