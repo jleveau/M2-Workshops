@@ -74,13 +74,23 @@ function addWorkshop(name, description) {
 }
 
 /**
- * TODO
+ * Removed a workshop with the given name {name}
  * @param {String} name
- * @return {Promise}
+ * @return {Promise} resolved once removed, rejected otherwise
  */
 function removeWorkshopByName(name) {
   return new Promise((resolve, reject) => {
-    reject(new Error('Not implemented'));
+    if (!name) {
+      reject(new Error('Workshop name required'));
+    }
+    getWorkshopByName(name)
+        .then((workshop) => {
+          db.splice(workshop.index, 1);
+          resolve();
+        })
+        .catch(
+            (e) => reject(new Error('Error during del of ' + name + ': ' + e)),
+        );
   });
 }
 
