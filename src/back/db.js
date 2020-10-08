@@ -20,7 +20,7 @@ function getWorkshopByName(name) {
     if (!name) {
       reject(new Error('name parameter is required'));
     }
-    resolve(db.find((workshop) => workshop.name === workshop));
+    resolve(db.findIndex((workshop) => workshop.name === name));
   });
 }
 
