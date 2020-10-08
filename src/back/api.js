@@ -19,8 +19,25 @@ function start(app) {
   });
 
   app.get('/workshop', function(req, res) {
-    console.log('get');
-    res.render('workshop');
+    res.render('workshop', {
+      update: false,
+      name: '',
+      description: '',
+    });
+  });
+
+  app.post('/workshop', function(req, res) {
+    const name = req.body.name;
+
+    db.getWorkshopByName(name)
+        .then(
+            (workshop) => res.render(
+                'workshop', {
+                  update: true,
+                  name: workshop.name,
+                  description: workshop.description,
+                }))
+        .catch((e) => res.send(e.message));
   });
 
   app.get('/workshop/:name', function(req, res) {
