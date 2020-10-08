@@ -1,8 +1,7 @@
 db = [];
 
 /**
- * TODO
- * @return {Promise}
+ * @return {Promise} a Promise that is resolved with the list of workshops
  */
 function getWorkshopList() {
   return new Promise((resolve ) => {
@@ -11,9 +10,16 @@ function getWorkshopList() {
 }
 
 /**
- * TODO
- * @param {String} name
- * @return {Promise}
+ * The promise is resolved with the workshop found and its index.
+ * {
+ *  name
+ *  description
+ *  index -> the index of the workshop in the list {@link db#getWorkshopList}
+ * }
+ *
+ * @param {String} name the name of the workshop to get
+ * @return {Promise} resolved once found, rejected if an error occured, or if
+ *  nothing was found
  */
 function getWorkshopByName(name) {
   return new Promise((resolve, reject) => {
@@ -46,10 +52,10 @@ function getWorkshopByName(name) {
 }
 
 /**
- * TODO
+ * Adds a workshop to the list
  * @param {String} name
  * @param {String} description
- * @return {Promise}
+ * @return {Promise} resolved once added, rejected if an error occured
  */
 function addWorkshop(name, description) {
   return new Promise((resolve, reject) => {
@@ -79,11 +85,11 @@ function removeWorkshopByName(name) {
 }
 
 /**
- * TODO
- * @param {String} oldName
- * @param {String} name
- * @param {String} description
- * @return {Promise}
+ * Updates the workshop that has the name {oldName}
+ * @param {String} oldName the name of the workshop to update
+ * @param {String} name its new name
+ * @param {String} description its new description
+ * @return {Promise} resolved once updated, rejected if an error occured
  */
 function updateWorkshop(oldName, name, description) {
   return new Promise((resolve, reject) => {
