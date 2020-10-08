@@ -29,7 +29,7 @@ function start(app) {
         .then((workshop) => {
           res.render('ejs/workshop', workshop);
         })
-        .catch((e) =>ejs.send(e.message));
+        .catch((e) => res.send(e.message));
   });
 
   // ----------------
