@@ -49,7 +49,12 @@ function start(app) {
   });
 
   app.post('/api/update-workshop', function(req, res) {
-    res.status(500).send('TODO');
+    const workshopOldName = req.body.old_name;
+    const workshopName = req.body.name;
+    const workshopDescription = req.body.description;
+    db.updateWorkshop(workshopOldName, workshopName, workshopDescription)
+        .then(() => res.redirect('/'))
+        .catch((e) => res.send(e.message));
   });
 }
 
