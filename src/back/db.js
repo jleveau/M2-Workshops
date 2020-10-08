@@ -59,12 +59,31 @@ function removeWorkshopByName(name) {
 
 /**
  * TODO
+ * @param {String} oldName
  * @param {String} name
+ * @param {String} description
  * @return {Promise}
  */
-function updateWorkshop(name) {
+function updateWorkshop(oldName, name, description) {
   return new Promise((resolve, reject) => {
-    reject(new Error('Not implemented'));
+    if (!oldName) {
+      reject(new Error('Workshop old name required'));
+    }
+    if (!name) {
+      reject(new Error('Workshop name required'));
+    }
+    if (!description) {
+      reject(new Error('Workshop description required'));
+    }
+    getWorkshopByName(oldName)
+        .then((workshop) => {
+          db[workshop.index].name = name;
+          db[workshop.index].description = description;
+          resolve();
+        })
+        .catch(
+            (e) => reject(new Error('Error during update of workshop: ' + e)),
+        );
   });
 }
 
