@@ -8,17 +8,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // set the view engine to ejs
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, '.', 'views/pages'))
-app.use(express.static(path.join(__dirname, '.', 'views/style')))
-
+app.set('views', path.join(__dirname, '.', 'views'))
+// app.use(express.static(path.join(__dirname, '.', 'views/style')))
+app.use(express.static(path.join(__dirname, '/public')))
 const workshop = require('./routes/workshop')
 const home = require('./routes/home')
 
 app.use('/', home)
 app.use('/workshop', workshop)
-app.use('/workshop/:name', workshop)
-app.use('/remove-workshop', workshop)
-app.use('/update-workshop', workshop)
 
 app.listen(3000, function () {
   console.log('Workshop app listening on port 3000!')
