@@ -46,10 +46,11 @@ app.get('/workshop/:name', function (req, res) {
     const workshopName = req.params.name
     InMemoryWorkshop.getWorkshopByName(workshopName)
     .then(workshop => {
-        res.render('ejs/workshop', workshop)
+        res.render('view/workshop', workshop)
     })
     .catch(e =>ejs.send(e.message))
 })
+
 
 app.get('/modif', function (req, res) {
     console.log("get")
@@ -59,7 +60,7 @@ app.get('/modif', function (req, res) {
 app.post('/modif', function (req, res) {
     const name = req.body.name
     const description = req.body.description
-    InMemoryWorkshop.updateWorkshop(name).then(() => {
+    InMemoryWorkshop.updateWorkshop(name, description).then(() => {
         InMemoryWorkshop.getWorkshopList()
         .then(workshops => {
             res.render("index", {
@@ -68,6 +69,10 @@ app.post('/modif', function (req, res) {
         })
     })
     .catch(e =>res.send(e.message))
+})
+
+/*app.get('/suppr', function (req, res) {
+    console.log("get")
 })
 
 app.post('/suppr', function (req, res) {
@@ -83,11 +88,7 @@ app.post('/suppr', function (req, res) {
     })
     .catch(e =>res.send(e.message))
 })
-
-app.post('/update-workshop', function(req, res) {
-    res.status(500).send("TODO")
-})
-
+*/
 app.listen(3000, function () {
   console.log('Workshop app listening on port 3000!')
 })

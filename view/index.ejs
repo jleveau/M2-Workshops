@@ -20,7 +20,9 @@
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
             <%= workshop.description %>
             <a type="button" href="/modif" class="btn btn-success btn-lg">Modifier</a>
-            <a type="button" href="/suppr" class="btn btn-success btn-lg">Supprimer</a>
+            <form action="/suppr" method="post">
+                <a type="button" href="/suppr" class="btn btn-success btn-lg">Supprimer</a>
+            </form>
         </div>        
     </li>
 <% }); %>
