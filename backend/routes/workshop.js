@@ -18,7 +18,7 @@ router.get('/workshop/:name', function (req, res) {
     .catch(e =>ejs.send(e.message))
 })
 
-router.post('/remove-workshop', workshopController.removeWorkshop);
+router.post('/remove-workshop/:name', workshopController.removeWorkshop);
 router.post('/update-workshop/:name', workshopController.updateWorkshop);
 router.get('/update-workshop/:name', workshopController.getUpdateWorkshopView);
 

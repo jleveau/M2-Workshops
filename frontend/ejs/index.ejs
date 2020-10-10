@@ -21,6 +21,9 @@
             <%= workshop.description %>        
         </div>        
         <a type="button" class="btn btn-primary" href="/workshops/update-workshop/<%= workshop.name %>">Update</a>
+        <form action="/workshops/remove-workshop/<%= workshop.name %>" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
     </li>
 <% }); %>
 </ul>

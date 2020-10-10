@@ -26,7 +26,12 @@ exports.getCreateWorkshopView = function (req, res) {
 };
 
 exports.removeWorkshop = function (req, res) {
-    res.status(500).send("TODO")
+   	const name = req.params.name;
+	InMemoryWorkshop.removeWorkshopByName(name)
+		.then(() => {
+			res.redirect("/workshops");
+		})
+		.catch(error => res.status(400).send(error.message));
 };
 
 exports.updateWorkshop = function(req, res) {
