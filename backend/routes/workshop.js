@@ -1,34 +1,13 @@
 const express = require("express");
 
-const InMemoryWorkshop = require("../models/inMemoryWorkshop")
+const workshopController = require('../controllers/workshop');
+
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    InMemoryWorkshop.getWorkshopList()
-    .then(workshops => {
-        res.render("index", {
-            workshops: workshops
-        })
-    })
-})
-
-router.get('/workshop', function (req, res) {
-    console.log("get")
-    res.render('workshop')
-})
-
-router.post('/workshop', function (req, res) {
-    const name = req.body.name
-    const description = req.body.description
-    InMemoryWorkshop.addWorkshop(name, description).then(() => {
-        InMemoryWorkshop.getWorkshopList()
-        .then(() => {
-            res.redirect("/workshops");
-        })
-    })
-    .catch(e =>res.send(e.message))
-})
+router.get('/', workshopController.printWorkshops);
+router.get('/workshop', workshopController.getCreateWorkshopView);
+router.post('/workshop', workshopController.createNewWorkshop);
 
 router.get('/workshop/:name', function (req, res) {
     const workshopName = req.params.name
@@ -39,12 +18,7 @@ router.get('/workshop/:name', function (req, res) {
     .catch(e =>ejs.send(e.message))
 })
 
-router.post('/remove-workshop', function (req, res) {
-    res.status(500).send("TODO")
-})
-
-router.post('/update-workshop', function(req, res) {
-    res.status(500).send("TODO")
-})
+router.post('/remove-workshop', workshopController.removeWorkshop);
+router.post('/update-workshop', workshopController.updateWorkshop);
 
 module.exports = router;
