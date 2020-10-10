@@ -16,11 +16,11 @@
 
     <ul class="list-unstyled">
       <% workshops.forEach(function(workshop, index) { %>
-      <li class="media my-4" id="workshop_<%= index %>">
+      <li class="media my-4" id="workshop_<%= workshop.id %>">
         <div class="media-body">
-          <h5 class="name mt-0 mb-1"><%= workshop.name %></h5>
-          <div class="description"><%= workshop.description %></div>
-          <a href="/remove-workshop/<%=index%>" type="button" >Delete</a>
+          <h5 class="name mt-0 mb-1"><%= workshop.title %></h5>
+          <div class="description"><%= workshop.content %></div>
+          <a href="/remove-workshop/<%=workshop.id%>" type="button" class="btn btn-danger" >Delete</a>
         </div>
         </div>
       </li>
