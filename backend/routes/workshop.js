@@ -19,6 +19,7 @@ router.get('/workshop/:name', function (req, res) {
 })
 
 router.post('/remove-workshop', workshopController.removeWorkshop);
-router.post('/update-workshop', workshopController.updateWorkshop);
+router.post('/update-workshop/:name', workshopController.updateWorkshop);
+router.get('/update-workshop/:name', workshopController.getUpdateWorkshopView);
 
 module.exports = router;

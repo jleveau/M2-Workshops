@@ -20,9 +20,7 @@
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
             <%= workshop.description %>        
         </div>        
-        <form action="/workshops/update-workshop" method="post">
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+        <a type="button" class="btn btn-primary" href="/workshops/update-workshop/<%= workshop.name %>">Update</a>
     </li>
 <% }); %>
 </ul>

@@ -22,7 +22,6 @@ exports.printWorkshops = function (req, res) {
 };
 
 exports.getCreateWorkshopView = function (req, res) {
-    console.log("get")
     res.render('workshop')
 };
 
@@ -31,5 +30,20 @@ exports.removeWorkshop = function (req, res) {
 };
 
 exports.updateWorkshop = function(req, res) {
-    res.status(500).send("TODO")
+    InMemoryWorkshop.updateWorkshop(req.params.name, req.body.name, req.body.description)
+        .then(() => {
+            res.redirect("/workshops");
+        })
+        .catch(error => res.status(400).send(error.message));
 };
+
+exports.getUpdateWorkshopView = function (req, res) {
+	const name = req.params.name;
+	InMemoryWorkshop.getWorkshopByName(name)
+		.then(workshop => {
+			res.render('updateWhorkshop', { 
+				workshop: workshop
+			 });
+		})
+		.catch(error => res.status(400).send(error.message + "ici"));
+}

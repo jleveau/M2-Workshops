@@ -1,4 +1,7 @@
 inMemoryWorkshop = []
+inMemoryWorkshop.push({name: 'w1', description: 'd1'});
+inMemoryWorkshop.push({name: 'w2', description: 'd2'});
+inMemoryWorkshop.push({name: 'w3', description: 'd3'});
 
 
 function getWorkshopList() {
@@ -12,7 +15,7 @@ function getWorkshopByName(name) {
         if (!name) {
             reject(new Error("name parameter is required"))
         }
-        resolve(inMemoryWorkshop.find(workshop => workshop.name === workshop))
+        resolve(inMemoryWorkshop.find(workshop => workshop.name === name))
     })
 }
 
@@ -38,10 +41,19 @@ function removeWorkshopByName(name) {
     })
 }
 
-function updateWorkshop(name) {
-    return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
-    })
+function updateWorkshop(name, newName, newDescription) {
+	console.log("element à modifié:" + name)
+	return new Promise((resolve, reject) => {
+		for (let i=0; i<inMemoryWorkshop.length; i++) {
+			if (name === inMemoryWorkshop[i].name) {
+				inMemoryWorkshop[i].name = newName;
+				inMemoryWorkshop[i].description = newDescription;
+				console.log("element modifié")
+				break;
+			}
+		}
+		resolve();
+	});
 }
 
 module.exports = {
