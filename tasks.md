@@ -11,7 +11,7 @@
 
 * [x]  Completer la requete post "/update-workshop"
 
-* [ ]  Completer la requete post "/remove-workshop"
+* [x]  Completer la requete post "/remove-workshop"
 
-* [ ]  Lié les boutons afin qu'ils appellent '/update-workshop' et '/remove-workshop'
+* [x]  Lier les boutons afin qu'ils appellent '/update-workshop' et '/remove-workshop'
 

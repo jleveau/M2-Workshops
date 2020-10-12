@@ -22,7 +22,9 @@
         </div>        
         <div class="btn-group" role="group" aria-label="Basic example">
             <a role="button" href="/workshop/<%= workshop.name %>" class="btn btn-primary">Modifier</a>
-            <a role="button" href="#" class="btn btn-danger">Supprimer</a>
+            <form action="/remove-workshop/<%= workshop.name %>" method="post">
+                <input role ="button" type="submit" value="Supprimer" class="btn btn-danger"/>
+            </form>
         </div>
     </li>
 <% }); %>
