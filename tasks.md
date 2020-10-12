@@ -1,0 +1,4 @@
+- Ajout de la mise à jour d'atelier
+- Ajout de la supression d'atelier
+- Correction des erreurs affichées par ESLint
+- Restructuration de l'arborescence
