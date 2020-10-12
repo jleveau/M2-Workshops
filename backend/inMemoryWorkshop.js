@@ -37,7 +37,7 @@ function removeWorkshopByName (name) {
     for (var i = 0; i < inMemoryWorkshop.length; i++) {
       console.log('obj' + obj[i].name)
       console.log(name)
-      if (obj[i].name == name) {
+      if (obj[i].name === name) {
         console.log('here')
         inMemoryWorkshop.splice(i, 1)
       }
@@ -50,7 +50,7 @@ function updateWorkshop (name, oldName) {
   return new Promise((resolve, reject) => {
     var obj = JSON.parse(JSON.stringify(inMemoryWorkshop))
     for (var i = 0; i < inMemoryWorkshop.length; i++) {
-      if (obj[i].name == oldName) {
+      if (obj[i].name === oldName) {
         obj[i].name = name
         inMemoryWorkshop[i] = obj[i]
       }
