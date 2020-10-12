@@ -5,15 +5,17 @@ const InMemoryWorkshop = require("./inMemoryWorkshop")
 const path = require("path")
 const ejs = require('ejs')
 var bodyParser = require('body-parser')
+const inMemoryWorkshop = require('./inMemoryWorkshop')
 
+//Middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '..', '/ejs'));
+app.set('views', path.join(__dirname, '..', '/views/pages'));
 app.use(express.static(path.join(__dirname , '..', 'css')));
 
-
+// Route
 app.get('/', function (req, res) {
     InMemoryWorkshop.getWorkshopList()
     .then(workshops => {
@@ -25,7 +27,7 @@ app.get('/', function (req, res) {
 
 app.get('/workshop', function (req, res) {
     console.log("get")
-    res.render('workshop')
+    res.render('create-workshop')
 })
 
 app.post('/workshop', function (req, res) {
@@ -43,20 +45,38 @@ app.post('/workshop', function (req, res) {
 })
 
 app.get('/workshop/:name', function (req, res) {
+    console.log("coucou")
     const workshopName = req.params.name
     InMemoryWorkshop.getWorkshopByName(workshopName)
     .then(workshop => {
-        res.render('ejs/workshop', workshop)
+        res.render('create-workshop', workshop)
     })
     .catch(e =>ejs.send(e.message))
 })
 
-app.post('/remove-workshop', function (req, res) {
-    res.status(500).send("TODO")
+app.get('/remove-workshop', function(req, res) {
+    res.render('remove-workshop',{workshop: 'ID'})
 })
 
-app.post('/update-workshop', function(req, res) {
-    res.status(500).send("TODO")
+app.post('/remove-workshop', function(request, response) {
+    if (request.body.message === undefined || request.body.message === '' ){
+        InMemoryWorkshop.getWorkshopList()
+        .then(workshops => {
+            response.render("index", {
+                workshops: workshops,
+                message: 'Aucun atelier sélectionné !'
+            })
+        })
+    }else{
+        InMemoryWorkshop.removeWorkshopByName(request.body.message)
+        .then(workshops => {
+            response.render('index', {
+                workshops : workshops,
+                message: request.body.message+' deleted success !'
+            })
+        })
+    }
+
 })
 
 app.listen(3000, function () {

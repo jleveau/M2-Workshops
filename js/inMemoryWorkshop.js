@@ -34,7 +34,9 @@ function addWorkshop(name, description) {
 
 function removeWorkshopByName(name) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        tmp = inMemoryWorkshop.filter(e => e.name != name)
+        inMemoryWorkshop = tmp
+        resolve(inMemoryWorkshop)
     })
 }
 
