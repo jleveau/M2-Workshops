@@ -41,9 +41,15 @@ function removeWorkshopByName(name) {
     });
 }
 
-function updateWorkshop(name) {
+function updateWorkshop(name,newName, newDescription) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"));
+        workshop = inMemoryWorkshop.find(workshop => workshop.name === name);
+        if(!workshop){
+            reject(new Error("Workshop doesn't exist"));
+        }
+        workshop.name = newName;
+        workshop.description = newDescription;
+        resolve();
     });
 }
 
