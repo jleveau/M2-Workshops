@@ -2,7 +2,7 @@ inMemoryWorkshop = []
 
 
 function getWorkshopList() {
-    return new Promise((resolve, ) => {
+    return new Promise((resolve,) => {
         resolve(inMemoryWorkshop)
     })
 }
@@ -38,9 +38,17 @@ function removeWorkshopByName(name) {
     })
 }
 
-function updateWorkshop(name) {
+function updateWorkshop(name, oldName) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        var obj = JSON.parse(JSON.stringify(inMemoryWorkshop))
+        for (var i = 0; i < inMemoryWorkshop.length; i++) {
+            if (obj[i].name == oldName) {
+                obj[i].name = name
+                inMemoryWorkshop[i] = obj[i]
+            }
+        }
+        resolve()
+
     })
 }
 
