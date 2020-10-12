@@ -17,8 +17,13 @@
 <% workshops.forEach(function(workshop) { %>
     <li class="media my-4">
         <div class="media-body">
-            <h5 class="mt-0 mb-1"><a href="/workshop/<%= workshop.name %>"> <%= workshop.name %></a></h5>
-            <%= workshop.description %>        </div>        
+            <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
+            <%= workshop.description %>        
+        </div>        
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a role="button" href="/workshop/<%= workshop.name %>" class="btn btn-primary">Modifier</a>
+            <a role="button" href="#" class="btn btn-danger">Supprimer</a>
+        </div>
     </li>
 <% }); %>
 </ul>

@@ -7,9 +7,9 @@
 * [x]  Modifier le fichier workshop.ejs afin de récupérer le nom et la description.
 
 
-* [ ]  Ajouter les boutons de suppressions et de modifications sur la page workshop uniquement si le workshop existe déjà.
+* [x]  Ajouter les boutons de suppressions et de modifications sur la page workshop uniquement si le workshop existe déjà.
 
-* [ ]  Completer la requete post "/update-workshop"
+* [x]  Completer la requete post "/update-workshop"
 
 * [ ]  Completer la requete post "/remove-workshop"
 
