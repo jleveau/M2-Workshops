@@ -18,7 +18,14 @@
     <li class="media my-4">
         <div class="media-body">
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
-            <%= workshop.description %>        </div>        
+            <%= workshop.description %>        
+        </div>        
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a role="button" href="/workshop/<%= workshop.name %>" class="btn btn-primary">Modifier</a>
+            <form action="/remove-workshop/<%= workshop.name %>" method="post">
+                <input role ="button" type="submit" value="Supprimer" class="btn btn-danger"/>
+            </form>
+        </div>
     </li>
 <% }); %>
 </ul>
