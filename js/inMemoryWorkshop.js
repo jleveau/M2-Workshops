@@ -34,7 +34,17 @@ function addWorkshop(name, description) {
 
 function removeWorkshopByName(name) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        
+        var obj = JSON.parse(JSON.stringify(inMemoryWorkshop))
+        for (var i = 0; i < inMemoryWorkshop.length; i++) {
+            console.log("obj"+obj[i].name)
+            console.log(name)
+        if (obj[i].name == name) {
+            console.log("here")
+            inMemoryWorkshop.splice(i,1)
+            }
+        }
+        resolve()
     })
 }
 

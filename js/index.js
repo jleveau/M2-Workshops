@@ -29,10 +29,11 @@ app.get('/workshop', function (req, res) {
 })
 
 app.get('/update-workshop', function (req, res) {
-    console.log("get")
     res.render('update-workshop')
 })
-
+app.get('/remove-workshop', function (req, res) {
+    res.render('remove-workshop')
+})
 app.post('/workshop', function (req, res) {
     console.log("add")
     const name = req.body.name
@@ -58,11 +59,19 @@ app.get('/workshop/:name', function (req, res) {
 })
 
 app.post('/remove-workshop', function (req, res) {
-    res.status(500).send("TODO")
+    const name = req.body.name
+    InMemoryWorkshop.removeWorkshopByName(name).then(() => {
+        InMemoryWorkshop.getWorkshopList()
+            .then(workshops => {
+                res.render("index", {
+                    workshops: workshops
+                })
+            })
+    })
+        .catch(e => res.send(e.message))
 })
 
 app.post('/update-workshop', function (req, res) {
-    // res.status(500).send("TODO")
     console.log("update")
     const name = req.body.name
     const oldName = req.body.oldName
