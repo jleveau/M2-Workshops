@@ -35,8 +35,8 @@ function addWorkshop(name, description) {
 function updateWorkshop(oldName, newName, newDescription) {
     return new Promise((resolve, reject) => {
         getWorkshopByName(oldName).then(workshop => {
-            workshop.name = newName? newName : workshop.name,
-            workshop.description = newDescription? newDescription : workshop.description;
+            workshop.name = newName;
+            workshop.description = newDescription;
             resolve();
         })
         .catch(error => {

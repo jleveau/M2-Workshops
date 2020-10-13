@@ -1,12 +1,10 @@
-La structure a été modifiée de telle sorte que l'on passe des dossiers ejs, css et js à une structure telle que :
+La structure a été modifiée de telle sorte que l'on passe des dossiers ejs, css et js à une structure avec une inspiration node.js express. De fait, on se retrouve avec les dossiers suivants :
 
-• annexe
-• route
-• view
-• test
+• annexe (servant de Data Access Layer en Node.js express)
+• node_modules (les modules de node.js)
+• view (contenant les fichiers UI de l'application, un Service Layer en node.js express)
+    - css
+    - template (contenant les fichiers .ejs de l'application)
 
-Le dossier annexe fait office de "Data access layer", contenant tous les ateliers, ainsi que leurs données en mémoire (nom, description).
 
-Le dossier route fait office de "Controller", régissant toutes les routes de l'application.
-
-Le dossier view fait office de "Service layer", contenant le coeur de l'application.
+Dans le root, on a placé l'ancien fichier index.js renommé app.js, servant de entrypoint de l'application et définissant les routes. On peut faire le parallèle comme étant un Controller en architecture Node.js express.
