@@ -12,7 +12,6 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/view/template"));
 app.use(express.static(path.join(__dirname , "view/css")));
 
-
 app.get("/", function (req, res) {
     InMemoryWorkshop.getWorkshopList()
     .then(workshops => {
@@ -61,7 +60,6 @@ app.post("/removeWorkshop", function (req, res) {
     InMemoryWorkshop.removeWorkshopByName(name)
     res.redirect("/");
 });
-
 
 app.listen(3000, function () {
   console.log("Workshop app listening on port 3000!");

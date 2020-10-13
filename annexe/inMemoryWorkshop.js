@@ -1,6 +1,5 @@
 inMemoryWorkshop = [];
 
-
 function getWorkshopList() {
     return new Promise((resolve, ) => {
         resolve(inMemoryWorkshop);
