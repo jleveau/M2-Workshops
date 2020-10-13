@@ -11,23 +11,19 @@ module.exports = class extends WorkshopRepository {
   }
 
   findOneById(id) {
-    return this.workshops.map((curr) => {
-      if (curr.id === id) return curr;
-    });
+    let res = this.workshops.find( v => v.id === id );
+    return res;
   }
 
   findAll() {
     return this.workshops;
   }
 
-  modifyOneById(id) {
-    this.workshops.map((curr) => {
-      if (curr.id === id) {
-        curr.title = title;
-        curr.content = content;
-        return;
-      }
-    });
+  modifyOneById(id, title, content) {
+    let workshop =  this.findOneById(id);
+    workshop.id = id;
+    workshop.title = title;
+    workshop.content = content;
   }
 
   deleteOneById(id) {

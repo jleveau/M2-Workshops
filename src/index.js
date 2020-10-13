@@ -16,20 +16,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, ".", "/view"));
 app.use(express.static(path.join(__dirname, ".", "view")));
-app.get("/", function (req, res) {
-  console.log(this);
 
+app.get("/", function (req, res) {
+  //-console.log(this);
   const workshops = new GetAllWorkshop(repo).execute();
   res.render("index", { workshops: workshops });
 });
 
 app.get("/workshop", function (req, res) {
-  console.log("get");
-  res.render("workshop");
+  //-console.log("get");
+  res.render("workshop", {workshop: null});
 });
 
 app.post("/workshop", function (req, res) {
-  console.log(req.body);
+  //-console.log(req.body);
   const title = req.body.name;
   const description = req.body.description;
   new CreateWorkshop(repo)
@@ -41,13 +41,24 @@ app.post("/workshop", function (req, res) {
 });
 
 app.get("/remove-workshop/:id", function (req, res) {
-  console.log(req.params.id);
+  //-console.log(req.params.id);
   new DeleteWorkshop(repo).execute(req.params.id);
   res.redirect("/");
 });
 
-app.post("/update-workshop", function (req, res) {
-  res.status(500).send("TODO");
+app.get("/update-workshop/:id", function (req, res) {
+  const workshop = new GetOneWorkshop(repo).execute(req.params.id);
+  res.render("workshop", {workshop: workshop});
+});
+
+app.post("/update-workshop/:id", function (req, res) {
+  console.log(req.params.id);
+  console.log(req.body.title);
+  new ModifyOneWorkshop(repo).execute(req.params.id, 
+    req.body.name, 
+    req.body.description
+  );
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
