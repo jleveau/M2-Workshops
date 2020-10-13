@@ -32,7 +32,18 @@ function addWorkshop(name, description) {
     });
 }
 
-
+function updateWorkshop(oldName, newName, newDescription) {
+    return new Promise((resolve, reject) => {
+        getWorkshopByName(oldName).then(workshop => {
+            workshop.name = newName? newName : workshop.name,
+            workshop.description = newDescription? newDescription : workshop.description;
+            resolve();
+        })
+        .catch(error => {
+            reject(error);
+        });
+    });
+}
 
 module.exports = {
     getWorkshopList,
