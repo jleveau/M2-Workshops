@@ -15,7 +15,6 @@ Taches à effectuer pour ajouter la fonctionnalité de mise à jour/suppression 
     **Definition of done**
         *gérer les évenements sur la base de données sur modification du workshop
 
-**T4**Ajouter du CSS au nouveau bouton ainsi qu'à la nouvelle page de modification
+**T4**Appliquer les changements suite à la page delete un workshop
     **Definition of done**
-        *dans le dossier css editer index.css pour aficher le bouton/lien
-        *toujours dans ce dossier ajouter editWorkshop.css dans lequel mettre le css de la page de modification
+        *gérer les évenements sur la base de données sur delete du workshop

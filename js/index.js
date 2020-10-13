@@ -18,12 +18,7 @@ repository.init().then(() => {
     
     
     app.get('/', function (req, res) {
-        repository.getWorkshopList()
-        .then(workshops => {
-            res.render("index", {
-                workshops: workshops
-            })
-        })
+        loadIndexPage(req, res)
     })
     
     app.get('/workshop', function (req, res) {
@@ -35,12 +30,7 @@ repository.init().then(() => {
         const name = req.body.name
         const description = req.body.description
         repository.addWorkshop(name, description).then(() => {
-            repository.getWorkshopList()
-            .then(workshops => {
-                res.render("index", {
-                    workshops: workshops
-                })
-            })
+            loadIndexPage(req, res)
         })
         .catch(e =>res.send(e.message))
     })
@@ -57,19 +47,18 @@ repository.init().then(() => {
     })
     
     app.post('/remove-workshop', function (req, res) {
-        res.status(500).send("TODO")
+        const name = req.body.name
+        repository.removeWorkshopByName(name).then(() => {
+            loadIndexPage(req, res)
+        })
+        .catch(e =>res.send(e.message))
     })
     
     app.post('/update-workshop', function(req, res) {
         const name = req.body.name
         const description = req.body.description
         repository.updateWorkshop(name, description).then(() => {
-            repository.getWorkshopList()
-            .then(workshops => {
-                res.render("index", {
-                    workshops: workshops
-                })
-            })
+            loadIndexPage(req, res)
         })
         .catch(e =>res.send(e.message))
     })
@@ -79,4 +68,13 @@ repository.init().then(() => {
     })
     
 })
+
+function loadIndexPage(req, res){
+    return repository.getWorkshopList()
+        .then(workshops => {
+            res.render("index", {
+                workshops: workshops
+            })
+        })
+}
 
