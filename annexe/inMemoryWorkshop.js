@@ -49,6 +49,5 @@ module.exports = {
     getWorkshopList,
     getWorkshopByName,
     addWorkshop,
-    removeWorkshopByName,
     updateWorkshop
 };
