@@ -11,8 +11,7 @@ module.exports = class extends WorkshopRepository {
   }
 
   findOneById(id) {
-    let res = this.workshops.find( v => v.id === id );
-    return res;
+    return this.workshops.find( v => v.id === id );
   }
 
   findAll() {

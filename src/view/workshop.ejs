@@ -5,7 +5,7 @@
     <% include ./head %>
 </head>
 <body class="container">
-<form action=<% if (workshop) { %>"/update-workshop/<%=workshop.id %>/" <% } else { %>"/workshop/" <% } %> method="post">
+<form action=<% if (workshop) { %>"/workshop/<%=workshop.id %>/" <% } else { %>"/workshop/" <% } %> method="post">
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" name="name" class="form-control" id="name" <% if (workshop) { %> value="<%=workshop.title %>" <% } %> placeholder="Workshop Name" required>
