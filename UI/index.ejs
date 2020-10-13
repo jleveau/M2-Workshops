@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Workshops</title>
+    <% include ./head %>
+  </head>
+  <body class="container">
+    <div class="jumbotron">
+      <h1>Workshops</h1>
+      <p>here is the list of workshop</p>
+    </div>
+
+    <a type="button" href="/workshop" class="btn btn-success btn-lg"
+      >Create new workshop</a
+    >
+
+    <ul class="list-unstyled">
+      <% workshops.forEach(function(workshop, index) { %>
+      <li class="media my-4" id="workshop_<%= index %>">
+        <div class="media-body">
+          <h5 class="name mt-0 mb-1"><%= workshop.name %></h5>
+          <div class="description"><%= workshop.description %></div>
+          <a type="button" href="/update-workshop/:<%= workshop.name %>" class="btn btn-secondary">Modify</a>
+          <a href="/remove-workshop/<%=index%>" type="button" >Delete</a>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+
+    <footer><% include ./footer %></footer>
+  </body>
+</html>
