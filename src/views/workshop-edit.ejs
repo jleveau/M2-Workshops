@@ -19,6 +19,10 @@
     <button type="submit" class="btn btn-primary">Update</button>
     <a type="button" class="btn btn-secondary" href="/">Cancel</a>
 </form>
+<form action="/workshop/remove" method="post">
+    <input type="hidden" name="name" id="name" value="<%= workshop.name %>">
+    <button type="submit" class="float-right btn btn-danger">Delete</button>
+</form>
 
 <footer>
     <% include ./footer %>

@@ -34,7 +34,12 @@ router.get('/:name', function (req, res) {
 })
 
 router.post('/remove', function (req, res) {
-  res.status(500).send('TODO')
+  const name = req.body.name
+  InMemoryWorkshop.removeWorkshopByName(name)
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch(e => res.send(e.message))
 })
 
 router.post('/update', function (req, res) {
