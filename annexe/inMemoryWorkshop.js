@@ -45,9 +45,26 @@ function updateWorkshop(oldName, newName, newDescription) {
     });
 }
 
+function removeWorkshopByName(name) {
+    return new Promise((resolve, reject) => {
+        getWorkshopByName(name).then(workshop => {
+            getWorkshopList().then(list => {
+                const indexWorkshop = list.indexOf(workshop);
+                 if (indexWorkshop > -1) {
+                    list.splice(indexWorkshop, 1);
+                    resolve();
+                } else {
+                    reject(new Error("Workshop is not in memory"));
+                }
+            });
+        });
+    });
+}
+
 module.exports = {
     getWorkshopList,
     getWorkshopByName,
     addWorkshop,
+    removeWorkshopByName,
     updateWorkshop
 };
