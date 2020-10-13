@@ -13,17 +13,15 @@
 
 <a type="button" href="/workshop" class="btn btn-success btn-lg">Create new workshop</a>
 
-<ul class="list-unstyled"></ul>
+<ul class="list-unstyled">
 <% workshops.forEach(function(workshop) { %>
     <li class="media my-4">
         <div class="media-body">
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
             <%= workshop.description %>
-            <a type="button" href="/modif" class="btn btn-success btn-lg">Modifier</a>
-            <form action="/suppr" method="post">
-                <a type="button" href="/suppr" class="btn btn-success btn-lg">Supprimer</a>
-            </form>
-        </div>        
+        </div>
+
+        
     </li>
 <% }); %>
 </ul>

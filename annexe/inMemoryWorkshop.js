@@ -32,29 +32,6 @@ function addWorkshop(name, description) {
     })
 }
 
-function removeWorkshopByName(name) {
-    return new Promise((resolve, reject) => {
-        if (!name) {
-            reject(new Error("Workshop name required"))
-        }
-        inMemoryWorkshop.indexOf(name);
-        if (index > -1) {
-            inMemoryWorkshop.splice(index, 1);
-        }
-        resolve();
-    })
-}
-
-function updateWorkshop(name, description) {
-    return new Promise((resolve, reject) => {
-        //let workshop = getWorkshopByName(oldName);
-        let workshop = inMemoryWorkshop[0];
-        workshop.name = name;
-        workshop.description = description;
-        resolve();
-    })
-}
-
 module.exports = {
     getWorkshopList,
     getWorkshopByName,
