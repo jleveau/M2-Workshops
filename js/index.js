@@ -56,12 +56,22 @@ repository.init().then(() => {
         .catch(e =>ejs.send(e.message))
     })
     
-    app.post('/remove-workshop/:name', function (req, res) {
+    app.post('/remove-workshop', function (req, res) {
         res.status(500).send("TODO")
     })
     
     app.post('/update-workshop', function(req, res) {
-        res.status(500).send("TODO")
+        const name = req.body.name
+        const description = req.body.description
+        repository.updateWorkshop(name, description).then(() => {
+            repository.getWorkshopList()
+            .then(workshops => {
+                res.render("index", {
+                    workshops: workshops
+                })
+            })
+        })
+        .catch(e =>res.send(e.message))
     })
     
     app.listen(3000, function () {

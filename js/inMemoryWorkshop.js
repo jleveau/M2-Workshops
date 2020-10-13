@@ -45,7 +45,14 @@ function removeWorkshopByName(name) {
 
 function updateWorkshop(name, description) {
 	return new Promise((resolve, reject) => {
-		reject(new Error("Not implemented"))
+		if (!name) {
+			reject(new Error("Workshop name required"))
+		}
+		if (!description) {
+			reject(new Error("Workshop description required"))
+		}
+		inMemoryWorkshop.find(workshop => workshop.name == name).description = description;
+		resolve()
 	})
 }
 

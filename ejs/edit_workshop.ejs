@@ -8,7 +8,7 @@
 <form action="/update-workshop" method="post">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" name="name" class="form-control" id="name"  value="<%= workshop.name%>" required>
+        <input type="text" name="name" class="form-control-plaintext" id="name"  value="<%= workshop.name%>" readonly>
     </div>
     <div class="form-group">
         <label for="description">Description</label>
@@ -16,7 +16,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Modifier</button>
     <a type="button" class="btn btn-secondary" href="/">Cancel</a>
-    <a type="button" class="btn btn-danger" href="/remove-workshop/<%=workshop.name%>">Delete</a>
+    <button type="submit" formaction="/remove-workshop" class="btn btn-danger">Delete</button>
 </form>
 
 <footer>
