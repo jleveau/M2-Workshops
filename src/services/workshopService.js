@@ -36,9 +36,8 @@ function removeWorkshopByName (name) {
     if (!name) {
       reject(new Error('Workshop name required'))
     }
-    const workshop = inMemoryWorkshop.find(w => w.name === name)
-    const id = inMemoryWorkshop.indexOf(workshop)
-    inMemoryWorkshop.splice(id)
+    const id = inMemoryWorkshop.findIndex(w => w.name === name)
+    inMemoryWorkshop.splice(id, 1)
     resolve()
   })
 }
