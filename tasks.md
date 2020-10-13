@@ -1,4 +1,4 @@
-#Tâches pour la modification d'Ateliers
+# Tâches pour la modification d'Ateliers
 
 - Compléter la fonction updateWorkshop(name_old, name, description) du fichier `inMemoryWorkshop.js`.
 - Ajouter le bouton de modification à la page `index.ejs` qui redirige vers `/workshop/:name`.
@@ -8,7 +8,7 @@
 - Dans le fichier `inMemoryWorkshop.js`, coder la fonction `updateWorkshop` qui vérifier les paramètres et mets à jour les champs.
 
 
-#Tâche pour la suppression d'Ateliers
+# Tâche pour la suppression d'Ateliers
 
 - Compléter la fonction removeWorkshopByName(name) du fichier `inMemoryWorkshop.js`.
 - Ajouter le bouton de suppression à la page `index.ejs`.
