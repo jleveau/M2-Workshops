@@ -48,13 +48,20 @@ app.get("/workshop/:name", function (req, res) {
     .catch(e =>ejs.send(e.message));
 });
 
-
 app.post("/updateWorkshop", function(req, res) {
     const oldName = req.body.oldName;
     const newName = req.body.name;
     const newDescription = req.body.description;
 
     InMemoryWorkshop.updateWorkshop(oldName, newName, newDescription)
+    .then(() => res.redirect("/"))
+    .catch(e =>res.send(e.message));
+});
+
+app.post("/removeWorkshop", function (req, res) {
+    const name = req.body.name;
+
+    InMemoryWorkshop.removeWorkshopByName(name)
     .then(() => res.redirect("/"))
     .catch(e =>res.send(e.message));
 });
