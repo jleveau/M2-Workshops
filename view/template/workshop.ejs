@@ -6,6 +6,11 @@
 </head>
 <body class="container">
 
+<% if (typeof workshop != "undefined") { %>
+    <form action="/update-workshop" method="post">
+<% } else { %>
+    <form action="/workshop" method="post">
+<% } %>
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" name="name" class="form-control" id="name"  placeholder="Workshop Name" value="<%= (typeof workshop != "undefined")? workshop.name : '' %>" required>
