@@ -2,7 +2,7 @@ La structure a été modifiée de telle sorte que l'on passe des dossiers ejs, c
 
 • annexe (servant de Data Access Layer en Node.js express)
 • node_modules (les modules de node.js)
-• view (contenant les fichiers UI de l'application, un Service Layer en node.js express)
+• view (contenant les fichiers UI de l'application)
     - css
     - template (contenant les fichiers .ejs de l'application)
 
