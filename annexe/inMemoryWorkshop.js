@@ -33,6 +33,15 @@ function addWorkshop(name, description) {
 
 function updateWorkshop(oldName, newName, newDescription) {
     return new Promise((resolve, reject) => {
+        if (!oldName) {
+            reject(new Error("Workshop oldName required"));
+        }
+        if (!newName) {
+            reject(new Error("Workshop newName required"));
+        }
+        if (!newDescription) {
+            reject(new Error("Workshop newDescription required"));
+        }
         getWorkshopByName(oldName).then(workshop => {
             workshop.name = newName;
             workshop.description = newDescription;
@@ -46,6 +55,9 @@ function updateWorkshop(oldName, newName, newDescription) {
 
 function removeWorkshopByName(name) {
     return new Promise((resolve, reject) => {
+        if (!name) {
+            reject(new Error("Workshop name required"));
+        }
         getWorkshopByName(name).then(workshop => {
             getWorkshopList().then(list => {
                 const indexWorkshop = list.indexOf(workshop);
