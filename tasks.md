@@ -58,7 +58,7 @@ V6 : Ajouter le bouton de suppression d’un atelier dans index.ejs
 
 Description : Dans le fichier index.ejs, le modifier afin d’ajouter un bouton “Remove”, qui puisse simplement appeler la méthode POST removeWorkshop et supprimer l’atelier de la liste lié au bouton avec <%= workshop.name %>.
 
-Un bouton “Remove” apparaîtra pour chaque atelier créé au préalable dans la liste affichée sur le lien http://localhost:3000/, afin de pouvoir cibler, et donc éditer un atelier plus spécifiquement.
+Un bouton “Remove” apparaîtra pour chaque atelier créé au préalable dans la liste affichée sur le lien http://localhost:3000/, afin de pouvoir cibler, et donc supprimer un atelier plus spécifiquement.
 
 Coût : 10 min/homme
 
@@ -81,7 +81,7 @@ US liée(s)  : Suppression d’atelier
 
 B8 : Ajouter méthode POST removeWorkshop dans le fichier app.js
 
-Description : Modifier le fichier app.js afin d’ajouter la méthode POST removeWorkshop permettant de récupérer le nom de l’atelier supprimé dans le body de index.ejs et ensuite d’appeler simplement la méthode removeWorkshopByName contenue dans le fichier InMemoryWorkshop.js. Après suppression par la méthode POST, on restera sur l’accueil par redirection.
+Description : Modifier le fichier app.js afin d’ajouter la méthode POST removeWorkshop permettant de récupérer le nom de l’atelier sur le point d'être supprimé dans le body de index.ejs et ensuite d’appeler simplement la méthode removeWorkshopByName contenue dans le fichier InMemoryWorkshop.js. Après suppression par la méthode POST, on restera sur l’accueil par redirection.
 
 Coût : 15 min/homme
 
