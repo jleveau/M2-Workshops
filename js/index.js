@@ -49,7 +49,9 @@ repository.init().then(() => {
         const workshopName = req.params.name
         repository.getWorkshopByName(workshopName)
         .then(workshop => {
-            res.render('ejs/workshop', workshop)
+            res.render('edit_workshop', {
+                workshop: workshop
+            })
         })
         .catch(e =>ejs.send(e.message))
     })
