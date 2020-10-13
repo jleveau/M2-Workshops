@@ -64,7 +64,7 @@ Coût : 10 min/homme
 
 Dépendance(s): Aucune.
 
-US liée(s)  : Mise à jour d’atelier
+US liée(s)  : Suppression d’atelier
 
 B7 : Ajouter méthode removeWorkshopByName dans le fichier inMemoryWorkshop.js
 
@@ -77,7 +77,7 @@ Coût : 30min/homme
 
 Dépendance(s): V6
 
-US liée(s)  : Mise à jour d’atelier
+US liée(s)  : Suppression d’atelier
 
 B8 : Ajouter méthode POST removeWorkshop dans le fichier app.js
 
@@ -87,7 +87,7 @@ Coût : 15 min/homme
 
 Dépendance(s): B7
 
-US liée(s)  : Mise à jour d’atelier
+US liée(s)  : Suppression d’atelier
 
 
 
