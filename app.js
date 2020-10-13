@@ -49,6 +49,17 @@ app.get("/workshop/:name", function (req, res) {
 });
 
 
+app.post("/updateWorkshop", function(req, res) {
+    const oldName = req.body.oldName;
+    const newName = req.body.name;
+    const newDescription = req.body.description;
+
+    InMemoryWorkshop.updateWorkshop(oldName, newName, newDescription)
+    .then(() => res.redirect("/"))
+    .catch(e =>res.send(e.message));
+});
+
+
 app.listen(3000, function () {
   console.log("Workshop app listening on port 3000!");
 });
