@@ -22,10 +22,11 @@
         </div> 
         <div>
             <form action="/remove-workshop" method="post">
-                <input id="name" name="name" value="<%= workshop.name%>" >
+                <input type='hidden' name="name" value="<%= workshop.name %>">
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
-            <a type="button" class="btn btn-info" href="/update-workshop">Modify</a>
+            <a type="button" class="btn btn-info" href="/workshop/<%= workshop.name %>">Modify</a>
+            
         </div>       
     </li>
 <% }); %>
