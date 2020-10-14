@@ -14,14 +14,16 @@
 <a type="button" href="/workshop" class="btn btn-success btn-lg">Create new workshop</a>
 
 <ul class="list-unstyled">
-<% workshops.forEach(function(workshop) { %>
-    <li class="media my-4">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
-            <%= workshop.description %>       
-        </div>        
-    </li>
-<% }); %>
+    <% workshops.forEach(function(workshop) { %>
+        <li class="media my-4">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
+                <%= workshop.description %>
+            </div>        
+        </li>
+    <% }); %>
+    <a type="button" href="/update-workshop" class="btn btn-success btn-lg">Modify</a>
+    <a type="button" href="/remove-workshop" class="btn btn-success btn-lg">Delete</a>       
 </ul>
 
 <footer>

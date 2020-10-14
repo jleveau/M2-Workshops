@@ -50,6 +50,14 @@ app.get('/workshop/:name', function (req, res) {
     .catch(e => ejs.send(e.message))
 })
 
+app.get('/remove-workshop', function (req, res) {
+  res.render('remove-workshop')
+})
+
+app.get('/update-workshop', function (req, res) {
+  res.render('update-workshop')
+})
+
 app.post('/remove-workshop', function (req, res) {
   res.status(500).send('TODO')
 })
