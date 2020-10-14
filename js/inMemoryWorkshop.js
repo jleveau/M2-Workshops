@@ -44,8 +44,24 @@ function removeWorkshopByName (name) {
   })
 }
 
-function updateWorkshop (name) {
+function updateWorkshop (oldName, newName, newDesc) {
   return new Promise((resolve, reject) => {
+    if (!oldName) {
+      reject(new Error('No name given to find the workshop'))
+    }
+    if (!newName && !newDesc) {
+      reject(new Error('No new data given to change the workshop'))
+    }
+    if (newName && !newDesc) {
+      inMemoryWorkshop.find(workshop => workshop.name === oldName).name = newName
+    }
+    if (!newName && newDesc) {
+      inMemoryWorkshop.find(workshop => workshop.name === oldName).description = newDesc
+    }
+    if (newName && newDesc) {
+      inMemoryWorkshop.find(workshop => workshop.name === oldName).description = newDesc
+      inMemoryWorkshop.find(workshop => workshop.name === oldName).name = newName
+    }
     reject(new Error('Not implemented'))
   })
 }
