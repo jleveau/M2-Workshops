@@ -1,12 +1,12 @@
 /*
-Task 6 : Suppression de workshop
+Task 5 : Suppression de workshop
 Scénario :
   - Aucun workshop n'existe
   - On en créer un, on vérifie qu'il existe
   - On le supprime et on vérifie qu'il n'existe plus
 */
 const { Builder, By, Key, until } = require('selenium-webdriver')
-var assert = require('assert');
+var assert = require('assert')
 const { fail } = require('assert');
 
 (async function AddWorkshop () {
