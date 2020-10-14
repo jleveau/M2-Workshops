@@ -34,8 +34,8 @@ var assert = require('assert');
     // Verification
     await driver.wait(until.elementLocated(By.className('jumbotron')), 2000)
     await driver.sleep(1000)
-    await driver.findElement(By.className('workshop_title')).getText().then(textValue => { assert.strictEqual('A new name', textValue) })
-    await driver.findElement(By.className('workshop_description')).getText().then(textValue => { assert.strictEqual('A new description', textValue) })
+    await driver.findElement(By.className('mt-0')).getText().then(textValue => { assert.strictEqual('A new name', textValue) })
+    await driver.findElement(By.className('media-body')).getText().then(textValue => { assert.strictEqual('A new description', textValue.split('\n')[1]) })
   } finally {
     await driver.quit()
   }
