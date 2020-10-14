@@ -53,16 +53,16 @@ function updateWorkshop (oldName, newName, newDesc) {
       reject(new Error('No new data given to change the workshop'))
     }
     if (newName && !newDesc) {
-      inMemoryWorkshop.find(workshop => workshop.name === oldName).name = newName
+      reject(new Error('You need to give a new description'))
     }
     if (!newName && newDesc) {
-      inMemoryWorkshop.find(workshop => workshop.name === oldName).description = newDesc
+      reject(new Error('You need to give a new name'))
     }
     if (newName && newDesc) {
       inMemoryWorkshop.find(workshop => workshop.name === oldName).description = newDesc
       inMemoryWorkshop.find(workshop => workshop.name === oldName).name = newName
     }
-    reject(new Error('Not implemented'))
+    resolve()
   })
 }
 
