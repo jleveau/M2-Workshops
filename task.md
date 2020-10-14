@@ -18,7 +18,7 @@ Implémenter la requête post de '/remove-workshop' de manière à pouvoir suppr
 
 Définition Of Done :
 
-* Ouvrir le fichier inMemoryWorkshop.js
+* Ouvrir le fichier index.js
 * Ajouté la tentative de requête
 * Ajouté la gestion du cas d'erreur
 
@@ -38,7 +38,7 @@ Implémenter la requête post de '/update-workshop' de manière à pouvoir suppr
 
 Définition Of Done :
 
-* Ouvrir le fichier inMemoryWorkshop.js
+* Ouvrir le fichier index.js
 * Ajouté la tentative de requête
 * Ajouté la gestion du cas d'erreur
 
@@ -68,8 +68,8 @@ Définition Of Done :
 
 * Ouvrir index.ejs
 * Ajouté un boutton de suppression par workshop
-* Faire en sorte que l'activation du boutton ouvre un popup de confirmation
-* Faire en sorte que la confirmation fasse appel à la fonction de suppression d'atelier et que l'annulation ne change rien à l'atelier
+* Ajouté une nouvelle page remove-workshop
+* Y mettre un formulaire récupérant le nom du workshop à enlever
 
 Task 8 : Ajout boutton modification
 
@@ -79,7 +79,5 @@ Définition Of Done :
 
 * Ouvrir index.ejs
 * Ajouté un boutton de modification par workshop
-* Faire en sorte que l'activation du boutton fasse appel à une fonction ouvrant un popup avec deux champs pour les nouvelles valeurs et avec un boutton modifier et annuler
-* Le popup ne nécessite qu'un seul des deux champs soit remplis pour appliqué des modification (l'utilisateur à le choix de ne changer que le nom, que la description ou les
-deux en même temps)
-* Faire en sorte que l'activation du boutton modification du popup fasse appel à la fonction changeant les données du workshop et que l'annulation ne change rien à l'atelier
+* Ajouté une nouvelle page modify-workshop
+* Y mettre un formulaire récupérant le nom du workshop à modifier, ainsi que les nouvelles données
