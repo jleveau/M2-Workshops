@@ -54,8 +54,18 @@ repository.init().then(() => {
         .catch(e =>ejs.send(e.message))
     })
     
-    app.post('/remove-workshop', function (req, res) {
-        res.status(500).send("TODO")
+    app.post('/workshop-remove', function (req, res) {
+        console.log("get remove");
+        const name = req.body.name
+        repository.removeWorkshopByName(name)
+            .then(() => { repository.getWorkshopList()
+                .then(workshops => {
+                    res.render("index", {
+                        workshops: workshops
+                    })
+                })
+            })
+            .catch(e =>res.send(e.message));
     })
     
     app.get('/workshop-update/:name', function(req, res) {
