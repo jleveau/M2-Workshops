@@ -13,16 +13,6 @@ router.post('/', function (req, res) {
                     workshops: workshops
                 })
             })
-    })
-        .catch(e => res.send(e.message))
-})
-
-router.get('/:name', function (req, res) {
-    const workshopName = req.params.name
-    InMemoryWorkshop.getWorkshopByName(workshopName)
-        .then(workshop => {
-            res.render('workshop', workshop)
-        })
-        .catch(e => ejs.send(e.message))
+    }).catch(e => res.send(e.message))
 })
 module.exports = router;
