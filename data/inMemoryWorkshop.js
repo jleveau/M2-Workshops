@@ -2,7 +2,7 @@ inMemoryWorkshop = []
 
 
 function getWorkshopList() {
-    return new Promise((resolve, ) => {
+    return new Promise((resolve,) => {
         resolve(inMemoryWorkshop)
     })
 }
@@ -12,7 +12,7 @@ function getWorkshopByName(name) {
         if (!name) {
             reject(new Error("name parameter is required"))
         }
-        resolve(inMemoryWorkshop.find(workshop => workshop.name === workshop))
+        resolve(inMemoryWorkshop.find(workshop => workshop.name === name))
     })
 }
 
@@ -38,9 +38,25 @@ function removeWorkshopByName(name) {
     })
 }
 
-function updateWorkshop(name) {
+function updateWorkshop(oldName, name, description) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+        if (!oldName) {
+            reject(new Error("Workshop oldName required"))
+        }
+        if (!name) {
+            reject(new Error("Workshop name required"))
+        }
+        if (!description) {
+            reject(new Error("Workshop description required"))
+        }
+        for (var workshop in inMemoryWorkshop) {
+            if (inMemoryWorkshop[workshop].name === oldName) {
+                inMemoryWorkshop[workshop].name = name;
+                inMemoryWorkshop[workshop].description = description;
+                break;
+            }
+        }
+        resolve()
     })
 }
 
