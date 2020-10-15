@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +5,14 @@
 </head>
 <body class="container">
 
-<div class="jumbotron">
-    <h1>Workshops</h1>
-    <p>here is the list of workshop</p>
-</div>
-
-<a type="button" href="/workshop" class="btn btn-success btn-lg">Create new workshop</a>
-
-<a type="button" href="/remove" class="btn btn-success btn-lg">Remove workshop</a>
+<form action="/remove" method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name"  placeholder="Workshop Name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a type="button" class="btn btn-secondary" href="/">Return</a>
+</form>
 
 <ul class="list-unstyled"></ul>
 <% workshops.forEach(function(workshop) { %>
