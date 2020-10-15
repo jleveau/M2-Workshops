@@ -58,6 +58,18 @@ repository.init().then(() => {
         res.status(500).send("TODO")
     })
     
+    app.get('/workshop-update', function(req, res) {
+        console.log("get update");
+        const workshopName = req.params.name;
+        repository.getWorkshopByName(workshopName)
+            .then(workshop => {
+                res.render('workshop-update', { 
+                    workshop: workshop
+                });
+            })
+            .catch(e =>res.send(e.message));
+    })
+
     app.post('/update-workshop', function(req, res) {
         res.status(500).send("TODO")
     })
