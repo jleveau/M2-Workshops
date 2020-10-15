@@ -58,7 +58,7 @@ repository.init().then(() => {
         res.status(500).send("TODO")
     })
     
-    app.get('/workshop-update', function(req, res) {
+    app.get('/workshop-update/:name', function(req, res) {
         console.log("get update");
         const workshopName = req.params.name;
         repository.getWorkshopByName(workshopName)
