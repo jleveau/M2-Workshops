@@ -38,8 +38,12 @@ function addWorkshop(name, description) {
 
 function removeWorkshopByName(name) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
-    })
+        if (!name) {
+            reject(new Error("workshop name required"));
+        }
+        inMemoryWorkshop.pop(name)
+        resolve(inMemoryWorkshop);
+    });
 }
 
 function updateWorkshop(oldName, newName, description) {
