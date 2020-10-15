@@ -22,7 +22,10 @@
             <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
             <%= workshop.description %>
         </div>
+        <div class="buttons">
         <a type="button" class="btn btn-primary" href="/workshop-update/<%= workshop.name %>">Update</a>
+        <a type="button" class="btn btn-primary" href="/remove-workshop/<%= workshop.name %>">Delete</a>
+    </div>
     </li>
     <% }); %>
     </ul>

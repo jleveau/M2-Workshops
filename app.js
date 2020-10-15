@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 const index = require("./controllers/index")
 const workshopCreation = require("./controllers/workshopCreation")
 const workshopUpdate = require("./controllers/workshopUpdate")
+const workshopDelete = require("./controllers/workshopDelete")
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,11 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/', index); 
 app.use('/workshop', workshopCreation); 
 app.use('/workshop-update', workshopUpdate);
-
-
-app.post('/remove-workshop', function (req, res) {
-    res.status(500).send("TODO")
-})
+app.use('/remove-workshop', workshopDelete);
 
 app.listen(3000, function () {
   console.log('Workshop app listening on port 3000!')
