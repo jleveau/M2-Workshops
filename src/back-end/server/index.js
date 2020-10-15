@@ -4,7 +4,7 @@ const app = express()
 const path = require("path")
 const ejs = require('ejs')
 var bodyParser = require('body-parser')
-const repository = require('./inMemoryWorkshop');
+const repository = require('../repositories/inMemoryWorkshop');
 //const repository = require("./mongoWorkshop");
 
 repository.init().then(() => {
@@ -13,8 +13,8 @@ repository.init().then(() => {
 
     // set the view engine to ejs
     app.set('view engine', 'ejs');
-    app.set('views', path.join(__dirname, '..', '/ejs'));
-    app.use(express.static(path.join(__dirname , '..', 'css')));
+    app.set('views', path.join(__dirname, '../../', '/front-end/components'));
+    app.use(express.static(path.join(__dirname , '../../', 'front-end/styles')));
     
     
     app.get('/', function (req, res) {

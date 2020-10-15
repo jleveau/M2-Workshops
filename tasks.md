@@ -6,7 +6,7 @@
 
 | ID | US | Description | Definition Of Done | Status | Type |
 |----|----|----|----|----|-----|
-| 1 | 0 | Refactoring | Implémenter l'architecture qui se trouve dans documentationDEV | En Cours | Fonctionnalité |
+| 1 | * | Refactoring | Implémenter l'architecture qui se trouve dans documentationDEV | Done | * |
 | 2 | 1 | Ajout du bouton de modification | Ajout du bouton dans index.esj qui redirigera le client vers workshop-update.ejs. Chaque workflow devra avoir son propre bouton | En Cours | Fonctionnalité |
 | 3 | 1 | Implémenter la methode get de la modification | Lorsque le client cliquera sur le bouton de modification, Une requette get sera envoyée avec comme paramètre le nom du workshop et le client sera rediriger vers workshop-update  | En Cours | Fonctionnalité |
 | 4 | 1 | Création du fichier workshop-update.ejs | La page contiendra un formulaire composé de champs nom et description qui seront pré-remplis en se servant du workshop passé en paramètre depuis la méthode get de workshop-update. La page contiendra également un bouton de soumission et d'annulation. | En Cours | Fonctionnalité |
