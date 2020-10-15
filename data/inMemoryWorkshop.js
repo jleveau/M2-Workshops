@@ -2,7 +2,7 @@ inMemoryWorkshop = []
 
 
 function getWorkshopList() {
-    return new Promise((resolve, ) => {
+    return new Promise((resolve,) => {
         resolve(inMemoryWorkshop)
     })
 }
@@ -12,7 +12,7 @@ function getWorkshopByName(name) {
         if (!name) {
             reject(new Error("name parameter is required"))
         }
-        resolve(inMemoryWorkshop.find(workshop => workshop.name === workshop))
+        resolve(inMemoryWorkshop.find(workshop => workshop.name === name))
     })
 }
 
@@ -40,7 +40,7 @@ function removeWorkshopByName(name) {
 
 function updateWorkshop(name) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"))
+       
     })
 }
 
