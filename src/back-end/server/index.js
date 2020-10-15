@@ -70,8 +70,19 @@ repository.init().then(() => {
             .catch(e =>res.send(e.message));
     })
 
-    app.post('/update-workshop', function(req, res) {
-        res.status(500).send("TODO")
+    app.post('/workshop-update', function(req, res) {
+        const oldName = req.body.oldName
+        const newName = req.body.newName
+        const description = req.body.description
+        repository.updateWorkshop(oldName, newName, description)
+            .then(() => {repository.getWorkshopList()
+                .then(workshops => {
+                    res.render("index", {
+                        workshops: workshops
+                    })
+                })
+            })
+            .catch(e =>res.send(e.message))
     })
     
     app.listen(3000, function () {
