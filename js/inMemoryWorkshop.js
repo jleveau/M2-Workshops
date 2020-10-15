@@ -39,8 +39,6 @@ function removeWorkshopByName(name) {
             reject(new Error("Workshop need a name to be delete"));
         }
 
-        // Array.find
-
         for(let i = 0; i < inMemoryWorkshop.length; i++){
             if(inMemoryWorkshop[i].name == name){
                 // Delete workshop
@@ -48,21 +46,21 @@ function removeWorkshopByName(name) {
             }
         }
         resolve();
-        
-        // reject(new Error("Not implemented"));
     });
 }
 
-
-// function removeWorkshopByName(name) {
-//     return new Promise((resolve, reject) => {
-//         reject(new Error("Not implemented"));
-//     });
-// }
-
-function updateWorkshop(name) {
+function updateWorkshop(oldName , newName) {
     return new Promise((resolve, reject) => {
-        reject(new Error("Not implemented"));
+        if (!oldName){
+            reject(new Error("Workshop need a name to be update"));
+        }
+
+        for(let i = 0; i < inMemoryWorkshop.length; i++){
+            if(inMemoryWorkshop[i].name == oldName){
+                inMemoryWorkshop[i].name = newName;
+            }
+        }
+        resolve();
     });
 }
 

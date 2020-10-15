@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<form action="/update-workshop" method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name"  placeholder="Workshop Name" required>
+    </div>
+    <div class="form-group">
+        <label for="newName">New name</label>
+        <input type="text" name="newName" class="form-control" id="new-name" placeholder="Give a new name for your workshop" required>
+    </div>
+    <button type="submit" class="btn btn-primary">update</button>
+    <a type="button" class="btn btn-secondary" href="/">Return</a>
+</form>
+
+<ul class="list-unstyled"></ul>
+<% workshops.forEach(function(workshop) { %>
+    <li class="media my-4">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1"><%= workshop.name %></h5>
+            <%= workshop.description %>        </div>        
+    </li>
+<% }); %>
+</ul>
+
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>

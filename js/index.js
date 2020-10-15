@@ -61,8 +61,6 @@ app.get("/remove", function (req, res) {
 });
 
 app.post("/remove", function (req, res) {
-    console.log("Remove");
-    // res.status(500).send("TODO");
     const name = req.body.name;
     InMemoryWorkshop.removeWorkshopByName(name).then(() => {
         InMemoryWorkshop.getWorkshopList()
@@ -75,8 +73,27 @@ app.post("/remove", function (req, res) {
     .catch(e =>res.send(e.message));
 });
 
+app.get("/update-workshop", function (req, res) {
+    InMemoryWorkshop.getWorkshopList()
+    .then(workshops => {
+        res.render("update", {
+            workshops: workshops
+        });
+    });
+});
+
 app.post("/update-workshop", function(req, res) {
-    res.status(500).send("TODO");
+    const oldName = req.body.name;
+    const newName = req.body.newName;
+    InMemoryWorkshop.updateWorkshop(oldName, newName).then(() => {
+        InMemoryWorkshop.getWorkshopList()
+        .then(workshops => {
+            res.render("index", {
+                workshops: workshops
+            });
+        });
+    })
+    .catch(e =>res.send(e.message));
 });
 
 app.listen(3000, function () {
