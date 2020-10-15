@@ -16,7 +16,7 @@
 **Dépendances :** Tâche 1  
 **User story :** 1
 
-**Tâche 3:**  Ajouter un bouton "Supprimer" dans index.ejs en face de chaque atelier. Modifier le fichier inMemoryWorkshop pour y ajouter la fonctionnalité pour supprimer un atelier. Ajouter dans le fichier workshop.js la route permettant d'appeler la fonction delete de inMemoryWorkshop et de mettre à jour l'index.  
+**Tâche 3:**  Ajouter un bouton "Supprimer" dans le fichier index.ejs en face de chaque atelier.Modifier le fichier inMemoryWorkshop pour y ajouter la fonctionnalité pour supprimer un atelier. Créer dans le fichier workshopDelete.js qui contient la route GET permettant d'appeler la fonction delete de inMemoryWorkshop, de mettre à jour l'index et d'y revenir. Créer le fichier remove-workshop.ejs qui permet de faire le lien entre le fichier app.js et workshopDelete.js.  
 **DoD :** Lorsque je suis sur l'index et que je clique sur supprimer, l'atelier se supprime.  
 **Durée :** 2 heures   
 **Dépendances :** Aucune  
