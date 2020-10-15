@@ -4,7 +4,7 @@ const app = express()
 const path = require("path")
 const ejs = require('ejs')
 var bodyParser = require('body-parser')
-const repository = require('./inMemoryWorkshop');
+const repository = require('../repositories/inMemoryWorkshop');
 //const repository = require("./mongoWorkshop");
 
 repository.init().then(() => {
@@ -13,8 +13,8 @@ repository.init().then(() => {
 
     // set the view engine to ejs
     app.set('view engine', 'ejs');
-    app.set('views', path.join(__dirname, '..', '/ejs'));
-    app.use(express.static(path.join(__dirname , '..', 'css')));
+    app.set('views', path.join(__dirname, '../../', '/front-end/components'));
+    app.use(express.static(path.join(__dirname , '../../', 'front-end/styles')));
     
     
     app.get('/', function (req, res) {
@@ -58,8 +58,31 @@ repository.init().then(() => {
         res.status(500).send("TODO")
     })
     
-    app.post('/update-workshop', function(req, res) {
-        res.status(500).send("TODO")
+    app.get('/workshop-update/:name', function(req, res) {
+        console.log("get update");
+        const workshopName = req.params.name;
+        repository.getWorkshopByName(workshopName)
+            .then(workshop => {
+                res.render('workshop-update', { 
+                    workshop: workshop
+                });
+            })
+            .catch(e =>res.send(e.message));
+    })
+
+    app.post('/workshop-update', function(req, res) {
+        const oldName = req.body.oldName
+        const newName = req.body.newName
+        const description = req.body.description
+        repository.updateWorkshop(oldName, newName, description)
+            .then(() => {repository.getWorkshopList()
+                .then(workshops => {
+                    res.render("index", {
+                        workshops: workshops
+                    })
+                })
+            })
+            .catch(e =>res.send(e.message))
     })
     
     app.listen(3000, function () {
