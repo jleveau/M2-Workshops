@@ -7,6 +7,10 @@
 <body class="container">
 
 <form action="/update-workshop/<%= workshop.name %>" method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="Workshop Name" value="<%= workshop.name %>" required>
+    </div>
 </form>
 
 <footer>
