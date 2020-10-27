@@ -5,9 +5,10 @@ const path = require("path")
 const ejs = require("ejs")
 var bodyParser = require("body-parser")
 const repository = require("./components/workshop/inMemoryWorkshop")
+const { removeWorkshopByName } = require("./components/workshop/inMemoryWorkshop")
 // const repository = require("./components/workshop/mongoWorkshop")
 
-let oldName = "";
+let oldName = ""
 
 repository.init().then(() => {
   app.use(bodyParser.urlencoded({ extended: false }))
@@ -55,8 +56,17 @@ repository.init().then(() => {
       .catch(e => ejs.send(e.message))
   })
 
-  app.post("/remove-workshop", function (req, res) {
-    res.status(500).send("TODO")
+  app.get("/remove-workshop/:name", function (req, res) {
+    const name = req.params.name
+    removeWorkshopByName(name).then(() => {
+      repository.getWorkshopList()
+        .then(workshops => {
+          res.render("index", {
+            workshops: workshops
+          })
+        })
+    })
+      .catch(e => ejs.send(e.message))
   })
 
   app.post("/update-workshop", function (req, res) {

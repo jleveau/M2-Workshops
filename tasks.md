@@ -41,3 +41,15 @@
 > Pour chaque atelier de la liste, ajouter un bouton "Update" amenant sur la page `update-workshop`.
 
 **DoD :** Chaque atelier de la liste (dans la page d'accueil), doit avoir un bouton "Update" redirigeant sur la page `update-workshop`.
+
+## #8
+
+> Créer un formulaire `remove-workshop` (définie dans le fichier `app/src/index.js`). Avec pour action `/remove-workshop/<%= workshop.name %>` et méthode `get`.
+
+**DoD :** Accéder à la page `remove-workshop/<nom-workshop>` doit supprimer l'atelier concerné et rediriger vers la page d'accueil.
+
+## #9
+
+> Pour chaque atelier de la liste, ajouter un bouton "Remove" amenant sur la page `remove-workshop`.
+
+**DoD :** Chaque atelier de la liste (dans la page d'accueil), doit avoir un bouton "Remove" redirigeant sur la page `remove-workshop`.
