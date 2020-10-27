@@ -7,6 +7,8 @@ var bodyParser = require("body-parser")
 const repository = require("./components/workshop/inMemoryWorkshop")
 // const repository = require("./components/workshop/mongoWorkshop")
 
+let oldName = "";
+
 repository.init().then(() => {
   app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -43,11 +45,12 @@ repository.init().then(() => {
       .catch(e => res.send(e.message))
   })
 
-  app.get("/workshop/:name", function (req, res) {
+  app.get("/update-workshop/:name", function (req, res) {
     const workshopName = req.params.name
     repository.getWorkshopByName(workshopName)
       .then(workshop => {
-        res.render("ejs/workshop", workshop)
+        oldName = workshopName
+        res.render("update-workshop", { workshop: workshop })
       })
       .catch(e => ejs.send(e.message))
   })
@@ -57,7 +60,18 @@ repository.init().then(() => {
   })
 
   app.post("/update-workshop", function (req, res) {
-    res.status(500).send("TODO")
+    const newName = req.body.name
+    const newDescription = req.body.description
+    repository.updateWorkshop(oldName, newName, newDescription).then(() => {
+      repository.getWorkshopList()
+        .then(workshops => {
+          res.render("index", {
+            workshops: workshops
+          })
+        })
+    })
+      .catch(e => ejs.send(e.message))
+    oldName = ""
   })
 
   app.listen(3000, function () {
